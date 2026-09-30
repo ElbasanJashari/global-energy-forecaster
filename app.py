@@ -36,8 +36,6 @@ def load_data():
 model = load_model()
 df = load_data()
 
-# Same features as train.py
-
 
 def make_features(data):
     d = data.copy()
@@ -53,7 +51,6 @@ def make_features(data):
 
 df_feat = make_features(df)
 
-# MUST match exactly what train.py used
 FEATURES = ['lag_24', 'lag_168', 'roll_mean_24',
             'roll_std_24', 'hour', 'dayofweek', 'month']
 
@@ -69,11 +66,10 @@ ax.legend()
 ax.set_ylabel("MW")
 st.pyplot(fig)
 
-# Forecast next 24h simple: use last row recursively is hard, so show next 24h prediction from last available
+# Forecast next 24h
 st.subheader("Next 24h forecast (from last data point)")
 next_24 = pd.DataFrame({
     "Datetime": pd.date_range(df.index[-1] + pd.Timedelta(hours=1), periods=24, freq="h"),
-    # using last 24 as proxy for demo
     "Predicted MW": model.predict(X_last.iloc[-24:])
 })
 
