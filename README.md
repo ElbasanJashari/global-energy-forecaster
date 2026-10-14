@@ -26,8 +26,6 @@ I only used PJME_hourly.csv.
 - Ridge: MAE 1836.89 | RMSE 2447.62 | R2 0.858
 - RandomForest (200 trees, depth 20): MAE 1150.73 | RMSE 1566.19 | R2 0.942
 
-That's ~47% better than naive.
-
 ### How to run it
 pip install -r requirements.txt
 python src/train.py
